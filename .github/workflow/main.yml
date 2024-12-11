@@ -26,7 +26,7 @@ jobs:
           python-version: ${{matrix.python-version}}
 
       - name: Install Project Dependencies
-        run: pip install '.[test]'
+        run: pip install '.[dev]'
 
       - name: Debug Installed Packages
         run: pip freeze
