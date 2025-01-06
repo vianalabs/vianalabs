@@ -1,0 +1,7 @@
+Docker
+selenium
+webdriver-manager
+flake8
+pyproject-flake8
+black
+isort
