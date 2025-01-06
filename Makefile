@@ -5,24 +5,32 @@ install:
 	@echo "Installing for dev environment"
 	@.venv/bin/python -m pip install -e '.[test,dev]'
 
-
 virtualenv:
 	@python -m venv .venv
 
-
 run:
-	@python app/app.py --debug
+	@python app/app.py --debug run
 
 ipython:
 	@.venv/bin/ipython
 
-
 lint:
-	@.venv/bin/pflake8
+	@.venv/bin/pflake8 app tests
+
+.PHONY: test
+
+test:
+	@echo "Starting Flask server in background..."
+	@python app/app.py --debug run &
+	@echo "Waiting for server to start..."
+	@sleep 5 
+	@python tests/test_index.py
+	@echo "Tests completed!"
+
 
 fmt:
-	@.venv/bin/isort --profile=black -m 3 app
-	@.venv/bin/black app
+	@.venv/bin/isort --profile=black -m 3 app tests
+	@.venv/bin/black app tests
 
 clean:            ## Clean unused files.
 	@find ./ -name '*.pyc' -exec rm -f {} \;

@@ -9,6 +9,7 @@ authors = [
 ]
 dependencies = [
     "flask",
+    "docker",
 ]
 
 [project.optional-dependencies]
@@ -16,7 +17,8 @@ test = [
     "flake8",
     "black",
     "isort",
-    "pytest",
+    "selenium",
+    "webdriver-manager",
 ]
 
 [tool.flake8]
