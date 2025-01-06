@@ -58,4 +58,4 @@ jobs:
 
       - name: Run Tests
         run: |
-          python tests/test_index.py  # ou o comando para rodar seus testes
+          make test
